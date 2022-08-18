@@ -1,0 +1,18 @@
+{
+  "name": "agenda-nodejs",
+  "description": "Aplicativo para salvar informações em banco de dados usando Nodejs + Express + MongoDB",
+  "version": "1.0.0",
+  "main": "server.js",
+  "author": "MrRobot",
+  "license": "ISC",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
