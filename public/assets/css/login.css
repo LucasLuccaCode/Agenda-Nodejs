@@ -1,0 +1,272 @@
+.c-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.c-container__content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  border-radius: 15px;
+  background: var(--secondary-color);
+  overflow: hidden;
+}
+
+.c-container__content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  background: var(--details-color);
+  transition: left .5s ease-in-out;
+  z-index: 10;
+}
+
+.c-container__content.login::before {
+  left: 60%;
+}
+
+.card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  min-height: 50vh;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: .3rem;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.description {
+  font-size: .7rem;
+  font-weight: 300;
+  line-height: .9rem;
+  margin: .8rem 0;
+}
+
+.btn {
+  position: relative;
+  padding: .3rem 0;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: .5rem;
+  border: none;
+  color: var(--primary-text);
+  text-transform: uppercase;
+  width: 6rem;
+  max-width: 90%;
+  transition: background .3s ease;
+  overflow: hidden;
+}
+
+.btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255,255,255, .3), transparent);
+  animation: button 1s ease infinite;
+}
+
+@keyframes button {
+  to {
+    left: 100%;
+  }
+}
+
+.btn:active {
+  transform: scale(.75);
+}
+
+
+/* FIRST CARD - REGISTRATION */
+
+.c-first__card {
+  /* z-index: 10; */
+}
+
+.c-first__card .c-first_column, 
+.c-first__card .c-second_column {
+  z-index: 10;
+  /* background: red; */
+}
+
+/* SECOND CARD - LOGIN */
+
+.c-second__card {
+  position: absolute;
+}
+
+.c-second__card .c-first_column, 
+.c-second__card .c-second_column {
+  z-index: -1;
+}
+
+/* Colum 1 */
+
+.c-first_column {
+  width: 40%;
+  z-index: 2;
+}
+
+.c-first_column  .title {
+  color: var(--primary-text);
+}
+
+.c-first_column .description {
+  color: var(--primary-text);
+}
+
+.c-first_column  .btn {
+  background: var(--secondary-text);
+  border: 2px solid #efefff;
+}
+
+.c-first_column .btn:hover {
+  background: #efefff;
+  color: var(--secondary-text);
+}
+
+/* Colum 2 */
+
+.c-second_column {
+  width: 60%;
+}
+
+.c-second_column  .title {
+  color: var(--secondary-text);
+}
+
+/* SOCIAL MEDIA */
+
+.social-media {
+  margin-top: .3rem;
+}
+
+.social-media ul {
+  display: flex;
+}
+
+.social-media li:not(:first-child){
+  margin-left: .5rem;
+}
+
+.social-media li {
+  border-radius: 50%;
+}
+
+.social-media a {
+  display: flex;
+}
+
+.social-media img {
+  width: 1.3rem;
+  height: 1.3rem;
+  transition: opacity .3s ease, transform .2s ease;
+}
+
+.social-media img:hover {
+  transform: scale(1.3);
+}
+
+.c-second_column .description {
+  color: #a5b5b6;
+}
+
+/* FORM */
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+}
+
+form input {
+  height: 1.3rem;
+  border: 0;
+  font-size: .6rem;
+  border-radius: .1rem;
+  background: #ecf0f1;
+  color: #7a7a80;
+  padding: 0 .3rem;
+  width: 100%;
+  margin-bottom: .6rem;
+}
+
+form input::placeholder {
+  color: #aaaab0;
+}
+
+form input:focus {
+  outline: 2px solid var(--details-color);
+}
+
+form a {
+  color: #a5b5b6;
+  font-size: .6rem;
+  margin-top: .6rem;
+}
+
+form a:hover {
+  text-decoration: underline;
+}
+
+.c-second_column  .btn {
+  background: var(--secondary-text);
+  border: 2px solid var(--secondary-text);
+  margin-top: .6rem;
+}
+
+.c-second_column .btn:hover {
+  background: transparent;
+  color: var(--secondary-text);
+}
+
+
+
+.c-container__content.login .c-first__card .c-first_column, 
+.c-container__content.login .c-first__card .c-second_column {
+  z-index: -2;
+  /* background: red; */
+}
+
+.c-container__content.login .c-second__card .c-second_column {
+  z-index: 9;
+}
+
+.c-container__content.login .c-second__card .c-first_column {
+  z-index: 11;
+  /* background: red; */
+}
+
+.c-container__content.registration .c-first__card .c-first_column {
+  z-index: 11;
+}
+
+.c-container__content.registration .c-first__card .c-second_column {
+  z-index: 9;
+  /* background: red; */
+}
