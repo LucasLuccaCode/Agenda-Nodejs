@@ -5,7 +5,7 @@ const router = express.Router()
 const homeControllers = require("./src/controllers/homeControllers")
 const loginControllers = require("./src/controllers/loginControllers")
 
-//Home route
+//Home routes
 router.get("/", homeControllers.index)
 
 //Login routes

@@ -1,7 +1,35 @@
 <%- include("./includes/head.ejs") %>
+  <link rel="stylesheet" href="../../assets/css/home.css">
   <title>Home</title>
-</head>
-<body>
-  <h1>Home Page</h1>
-</body>
-</html>
+  </head>
+
+  <body>
+    <%- include("./includes/header") %>
+    <h1>Home Page</h1>
+    <main class="c-main">
+
+      <table class="c-table">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Telefone</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Irineu</td>
+            <td>Irineu@gmail.com</td>
+            <td>(11)9 9856-3024</td>
+            <td>
+              <a class="edit" href="/home?action=edit&id=0">Editar</a>
+              <a class="delete" href="/home?action=delete&id=0">Deletar</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+  </body>
+
+  </html>

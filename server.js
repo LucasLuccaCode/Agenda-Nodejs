@@ -5,6 +5,7 @@ const app = express()
 const path = require("path")
 const routes = require("./routes")
 const mongoose = require("mongoose")
+const flash = require("connect-flash")
 
 //Mongodb
 mongoose.connect(
@@ -28,6 +29,11 @@ app.use(express.static(path.resolve(__dirname, "public")))
 //Views
 app.set("views", path.resolve(__dirname, "src", "views"))
 app.set("view engine", "ejs")
+
+//Session / Flash
+const sessionMiddleware = require("./src/middlewares/sessionMiddleware")
+app.use(sessionMiddleware)
+app.use(flash())
 
 //Routes
 app.use(routes)
