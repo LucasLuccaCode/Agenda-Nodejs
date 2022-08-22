@@ -5,7 +5,11 @@
         <a class="logo" href="/">Agenda</a>
       </li>
       <li>
-        <a class="login-register" href="/login/index">Logar / Cadastrar</a>
+        <% if(user){ %>
+          <a class="login-register" href="/login/logout">Sair</a>
+        <% } else { %>
+          <a class="login-register" href="/login/index">Logar / Cadastrar</a>
+        <% } %>
       </li>
     </ul>
   </nav>

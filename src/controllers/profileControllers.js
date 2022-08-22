@@ -1,3 +1,3 @@
 exports.index = async (req, res) => {
-  res.render("home")
+  res.render("profile")
 }

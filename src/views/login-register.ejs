@@ -1,11 +1,11 @@
 <%- include("./includes/head") %>
   <link rel="stylesheet" href="../../assets/css/login.css">
   <script src="../../assets/js/login.js" defer></script>
-  <title>Login / registration</title>
+  <title>Entrar / Cadastrar</title>
   </head>
 
   <body>
-    <section class="c-container">
+    <section class="c-container" data-container>
       <%- include("./includes/header") %>
       <main class="c-main">
 
@@ -13,7 +13,7 @@
           <%- include("./includes/messages") %>
         </div>
 
-        <div class="c-container__content <%= page %>">
+        <div class="c-container__content <%- user ? 'login' : 'registration' %>">
 
           <!-- FIRST CONTENT -->
           <div class="c-first__card card">
@@ -45,7 +45,7 @@
                 </ul>
               </div>
               <p class="description">ou preencha os campos abaixo para criar uma conta.</p>
-              <form action="/login/registration" method="POST">
+              <form action="/login/register" method="POST">
                 <input type="text" name="username" placeholder="Nome" required>
                 <input type="email" name="email" placeholder="Email" required>
                 <input type="password" name="password" placeholder="Senha" required pattern=".{6,12}"
@@ -80,8 +80,8 @@
               </div>
               <p class="description">ou insira seus dados abaixo para logar na conta.</p>
               <form action="/login/login" method="POST">
-                <input type="text" value="<%= user.username %>" name="username" placeholder="Nome" required>
-                <input type="password" value="<%= user.password %>" name="password" placeholder="Senha" required>
+                <input type="text" name="username" value="<%- user ? user.username : '' %>" placeholder="Nome" required>
+                <input type="password" name="password" value="<%- user ? user.password : '' %>" placeholder="Senha" required>
                 <a href="#">Esqueceu sua senha?</a>
                 <button type="submit" class="btn">Logar</button>
               </form>

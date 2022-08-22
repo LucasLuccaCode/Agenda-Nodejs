@@ -1,33 +1,40 @@
-const Login = require("../models/loginModel")
+const { Register, Login } = require("../models/RegisterLogin")
 
 exports.index = (req, res) => {
-  res.locals.errors = req.flash("error")
-  const success = req.flash("success")
-  res.locals.success = success
-  res.render("login-registration", { 
-    page: success.length ? "login" : "registration", 
-    user: { 
-      username: req.session.user ? req.session.user.username : "",
-      password: req.session.user ? req.session.user.password : "" 
-    } 
-  })
+  res.render("login-register")
 }
 
-exports.login = (req, res) => {
-  res.send(req.body)
-}
+exports.register = async (req, res) => {
+  const registration = new Register(req.body)
+  await registration.register()
 
-exports.registration = async (req, res) => {
-  const login = new Login(req.body)
-  await login.register()
-
-  if(login.errors.length){
-    req.flash("error", login.errors)
+  if (registration.errors.length) {
+    req.flash("error", registration.errors)
     req.session.save(() => res.redirect("back"))
-    return 
+    return
   }
-  req.session.user = login.user
+  req.session.user = registration.user
   req.flash("success", "Usuário criado com sucesso!")
   req.session.save(() => res.redirect("back"))
-  return 
+  return
+}
+
+exports.login = async (req, res) => {
+  const login = new Login(req.body)
+  await login.login()
+  console.log(login.errors.length)
+  if (login.errors.length) {
+    req.flash("error", login.errors)
+    req.session.save(() => res.redirect("back"))
+    return
+  }
+  req.session.user = login.user
+  req.flash("success", "Logado com sucesso!")
+  req.session.save(() => res.redirect(`/profile/${login.user.username}`))
+}
+
+
+exports.logout = (req, res) => {
+  req.session.destroy()
+  res.redirect("/")
 }
