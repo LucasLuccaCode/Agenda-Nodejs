@@ -1,6 +1,7 @@
 ## Agenda Nodejs
 
-Aplicativo para salvar criar usuáio e savar informações de contatos em uma agenda utilizando Nodejs + Express e banco de dados Mongodb
+Aplicação para cadastrar usuários e salvar informações de contatos em uma agenda utilizando Nodejs + Express e banco de dados Mongodb
+
 <br>
 
 ### Pagina de Cadastro e Login
