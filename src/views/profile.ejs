@@ -1,6 +1,6 @@
 <%- include("./includes/head") %>
-<link rel="stylesheet" href="../../assets/css/profile.css">
-<link rel="stylesheet" href="../../assets/css/contacts.css">
+<link rel="stylesheet" href="/assets/css/profile.css">
+<link rel="stylesheet" href="/assets/css/contacts.css">
 
   <title>Perfil</title>
   </head>
@@ -8,7 +8,8 @@
   <body>
     <section class="c-container" data-container>
       <%- include("./includes/header") %>
-      <h1>Bem vindo <%= user.username %>
+      <h1>
+        Bem vindo <%= user.username %>
       </h1>
       <main class="c-main">
 
@@ -23,7 +24,7 @@
       </main>
 
       <footer data-add-contact>
-        <a href="/contacts/register>">+</a>
+        <a href="/contacts/index?action=register">+</a>
       </footer>
 
     </section>

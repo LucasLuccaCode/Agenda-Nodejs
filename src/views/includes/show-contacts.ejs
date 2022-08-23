@@ -1,27 +1,38 @@
-<table class="c-table__contacts">
-  <thead>
-    <tr>
-      <th>Nome</th>
-      <th>Sobrenome</th>
-      <th>Email</th>
-      <th>Telefone</th>
-      <th>Ações</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% if(contacts) { %>
-      <% for(let contact of contacts) {%>
-        <tr>
-          <td><%= contact.name%></td>
-          <td><%= contact.surname%></td>
-          <td><%= contact.email%></td>
-          <td><%= contact.tel%></td>
-          <td>
-            <a class="edit" href="/contacts/edit?id=<%= contact._id %>">Editar</a>
-            <a class="delete" href="/contacts/delete/<%= contact._id %>">Deletar</a>
-          </td>
-        </tr>
+<% if(contacts){ %>
+
+  <table class="c-table__contacts">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Sobrenome</th>
+        <th>Email</th>
+        <th>Telefone</th>
+        <th colspan="2">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if(contacts) { %>
+        <% for(let contact of contacts) {%>
+          <tr>
+            <td><%= contact.name%></td>
+            <td><%= contact.surname%></td>
+            <td><%= contact.email%></td>
+            <td><%= contact.tel%></td>
+            <td>
+              <a class="edit" href="/contacts/index?action=edit&id=<%= contact._id %>" title="Editar contato">
+                <img src="/icons/edit.png" alt="Editar">
+              </a>
+            </td>
+            <td>
+              <a class="delete" href="/contacts/delete?id=<%= contact._id %>" title="Excluir contato">
+                <img src="/icons/delete.png" alt="Deletar">
+              </a>
+            </td>
+          </tr>
+        <% } %>
       <% } %>
-    <% } %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+<% } else { %>
+  <p class="empty-contacts">Não há contatos para exibir...</p>
+<% } %>

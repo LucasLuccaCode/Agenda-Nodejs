@@ -22,7 +22,6 @@ exports.register = async (req, res) => {
 exports.login = async (req, res) => {
   const login = new Login(req.body)
   await login.login()
-  console.log(login.errors.length)
   if (login.errors.length) {
     req.flash("error", login.errors)
     req.session.save(() => res.redirect("back"))
@@ -30,11 +29,5 @@ exports.login = async (req, res) => {
   }
   req.session.user = login.user
   req.flash("success", "Logado com sucesso!")
-  req.session.save(() => res.redirect(`/profile/${login.user.username}`))
-}
-
-
-exports.logout = (req, res) => {
-  req.session.destroy()
-  res.redirect("/")
+  req.session.save(() => res.redirect(`/profile/user/${login.user.username}`))
 }

@@ -25,6 +25,11 @@ html {
   background: var(--primary-color);
 }
 
+.empty-contacts {
+  font-size: .7rem;
+  color: rgba(255, 255, 255, .5);
+}
+
 li {
   list-style: none;
 }
@@ -47,9 +52,13 @@ h1 {
 }
 
 .c-nav {
+  position: sticky;
+  top: 0;
   width: 100%;
   background: var(--secondary-color);
   padding: .5rem .7rem;
+  z-index: 10;
+  box-shadow: 0 2px 1px rgba(0,0,0, .04);
 }
 
 .c-nav ul {

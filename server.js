@@ -36,8 +36,8 @@ app.use(sessionMiddleware)
 app.use(flash())
 
 //Global Middlewares
-const setLocalsMiddleware = require("./src/middlewares/setLocalMiddleware")
-app.use(setLocalsMiddleware)
+const setLocalsVarMiddleware = require("./src/middlewares/setLocalsVarMiddleware")
+app.use(setLocalsVarMiddleware)
 
 //Routes
 app.use(routes)

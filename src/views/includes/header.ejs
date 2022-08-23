@@ -5,8 +5,10 @@
         <a class="logo" href="/">Agenda</a>
       </li>
       <li>
-        <% if(user){ %>
-          <a class="login-register" href="/login/logout">Sair</a>
+        <% if(user && page === "profile"){ %>
+          <a class="login-register" href="/profile/logout">Sair</a>
+        <% } else if(user) { %>
+          <a class="login-register" href="/profile/user/<%= user.username %>">Perfil</a>
         <% } else { %>
           <a class="login-register" href="/login/index">Logar / Cadastrar</a>
         <% } %>

@@ -12,6 +12,11 @@ class Contact {
     if(this.errors.length) return
     ContactModel.create(this.body)
   }
+  async edit(id){
+    await this.validate()
+    if(this.errors.length) return
+    this.contact = await ContactModel.updateOne({ _id: id }, { $set: this.body })
+  }
   async validate(){
     this.cleanUp()
     if(!validator.isEmail(this.body.email)) this.errors.push("Email inválido.")
@@ -23,6 +28,19 @@ class Contact {
       email: this.body.email,
       tel: this.body.tel
     }
+  }
+  static async getContact(id){
+    try {
+      const contact = await ContactModel.findOne({ _id: id })
+      return contact
+    } catch (err) {
+      console.log(err)
+      return null
+    }
+  }
+  static async delete(id){
+    if(!id) return null
+    return await ContactModel.deleteOne({ _id: id })
   }
 }
 

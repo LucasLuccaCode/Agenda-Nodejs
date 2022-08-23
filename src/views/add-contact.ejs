@@ -1,5 +1,5 @@
 <%- include("./includes/head.ejs") %>
-  <link rel="stylesheet" href="../../assets/css/contacts.css">
+  <link rel="stylesheet" href="/assets/css/contacts.css">
   <title>Contato</title>
   </head>
 
@@ -7,7 +7,7 @@
     <section class="c-container" data-container>
 
       <%- include("./includes/header") %>
-        <h1><%- action == 'edit' ? 'Editar' : 'Criar' %> Contato</h1>
+        <h1><%- action == 'edit' ? 'Editar' : 'Adicionar' %> Contato</h1>
         <main class="c-main">
       
           <div class="c-messages">
@@ -16,15 +16,20 @@
 
           <div class="c-container__content">
             <% if( action === "edit" ) { %>
-              <form action="/contacts/update?id=<%= id %>" method="POST">
+              <form action="/contacts/update?id=<%= contact._id %>" method="POST">
             <% } else { %>
               <form action="/contacts/register" method="POST">
             <% } %>
-                  <input type="text" name="name" placeholder="Nome" required>
-                  <input type="text" name="surname" placeholder="Sobrenome" required>
-                  <input type="email" name="email" placeholder="Email" required>
-                  <input type="tel" name="tel" placeholder="Telefone" required>
-                  <button type="submit"><%- action == 'edit' ? 'Salvar' : 'Adicionar' %></button>
+                  <input type="text" name="name" value="<%= contact.name %>" placeholder="Nome" required>
+                  <input type="text" name="surname" value="<%= contact.surname %>" placeholder="Sobrenome" required>
+                  <input type="email" name="email" value="<%= contact.email %>" placeholder="Email" required>
+                  <input type="tel" name="tel" value="<%= contact.tel %>" placeholder="Telefone" required>
+                  <div class="buttons">  
+                    <button type="click" onclick="history.back()" class="cancel">Cancelar</button>
+                    <button type="submit">
+                      <%- action == 'edit' ? 'Salvar' : 'Adicionar' %>
+                    </button>
+                  </div>
               </form>
           </div>
         </main>

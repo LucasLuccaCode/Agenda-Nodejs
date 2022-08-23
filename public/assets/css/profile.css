@@ -1,7 +1,11 @@
+.c-container__content {
+  background: var(--secondary-color);
+}
+
 /* FOOTER */
 
 footer {
-  position: absolute;
+  position: fixed;
   bottom: 1rem;
   right: 1rem;
   width: 2.5rem;

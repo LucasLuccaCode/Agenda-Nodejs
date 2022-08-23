@@ -18,17 +18,16 @@ router.get("/", getContactsMiddleware, homeControllers.index)
 router.get("/login/index", loginControllers.index)
 router.post("/login/register", loginControllers.register)
 router.post("/login/login", loginControllers.login)
-router.get("/login/logout", loginControllers.logout)
 
 
 //Profile routes
-router.get("/profile/:userID", checkLoggedMiddleware, getContactsMiddleware, profileControllers.index)
+router.get("/profile/user/:userID", checkLoggedMiddleware, getContactsMiddleware, profileControllers.index)
+router.get("/profile/logout", profileControllers.logout)
 
 //Contacts routes
 router.get("/contacts/index", contactsControllers.index)
-router.get("/contacts/register", contactsControllers.register)
-router.get("/contacts/edit", contactsControllers.edit)
+router.post("/contacts/register", contactsControllers.register)
 router.post("/contacts/update", contactsControllers.update)
-router.get("/contacts/delete/:id", contactsControllers.delete)
+router.get("/contacts/delete", contactsControllers.delete)
 
 module.exports = router

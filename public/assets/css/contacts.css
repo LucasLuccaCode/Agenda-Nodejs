@@ -10,9 +10,11 @@
   width: 50%;
   margin-top: .5rem;
   padding: .75rem;
-  border-radius: var(--b-radius-default);
   background: var(--secondary-color);
+  border-radius: var(--b-radius-default);
   overflow: hidden;
+  box-shadow: 0 2px 2px 1px rgba(0,0,0, .08);
+  /* border: 1.8px solid rgba(255,255,255, .2); */
 }
 
 .c-container__content form {
@@ -28,7 +30,7 @@
   border: 0;
   font-size: .6rem;
   border-radius: .1rem;
-  background: rgba(255,255,255, .1);
+  background: rgba(0,0,0, .1);
   color: #efefff;
   padding: 0 .3rem;
   width: 100%;
@@ -43,22 +45,35 @@
   outline: 2px solid var(--details-color);
 }
 
+.c-container__content form .buttons {
+  display: flex;
+  width: 100%;
+}
+
 .c-container__content form button {
   position: relative;
   cursor: pointer;
-  width: 100%;
+  flex: 1;
   font-size: .62rem;
   color: var(--secondary-color);
   padding: .3rem 0;
   font-weight: bold;
-  border-radius: .1rem;
+  border-radius: .3rem;
   border: 2px solid var(--details-color);
   background: var(--details-color);
+}
+
+.c-container__content form .cancel {
+  border: 2px solid #efefff;
+  color: var(--secondary-color);
+  background: #efefef;
+  margin-right: .3rem;
 }
 
 .c-container__content form button:hover {
   background: transparent;
   color: var(--details-color);
+  border: 2px solid var(--details-color);
 }
 
 /* SHOW CONTACTS */
@@ -72,18 +87,25 @@
 
 
 .c-table__contacts th {
-  font-size: .75rem;
+  font-size: .6rem;
   color: var(--secondary-text);
   padding-top: .5rem;
+}
+
+.c-table__contacts th:not(:first-child){
+  text-align: center;
 }
 
 .c-table__contacts td {
   font-size: .65rem;
   color: #a5a5b5;
-  padding: .8rem 0;
   text-overflow: ellipsis;
   white-space: nowrap;
+  padding: .8rem 0;
   overflow: hidden;
+}
+.c-table__contacts td:not(:first-child) {
+  padding-left: .2rem;
 }
 
 .c-table__contacts tbody tr:not(:last-child) {
@@ -91,18 +113,22 @@
 }
 
 .c-table__contacts a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: .4rem;
   padding: .2rem .5rem;
   font-weight: bold;
+}
+
+.c-table__contacts a img {
+  width: 1.2rem;
+  height: 1.2rem;
+  background: rgba(0,0,0, .1);
+  padding: .2rem;
   border-radius: 4px;
 }
 
-.c-table__contacts a.edit {
-  color: #efefff;
-  border: 2px solid #efefff;
-}
-
-.c-table__contacts a.delete {
-  color: #fa1561;
-  border: 2px solid #fa1561;
+.c-table__contacts a:hover img {
+  background: rgba(255,255,255, .1);
 }
