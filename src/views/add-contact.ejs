@@ -20,6 +20,7 @@
             <% } else { %>
               <form action="/contacts/register" method="POST">
             <% } %>
+                  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                   <input type="text" name="name" value="<%= contact.name %>" placeholder="Nome" required>
                   <input type="text" name="surname" value="<%= contact.surname %>" placeholder="Sobrenome" required>
                   <input type="email" name="email" value="<%= contact.email %>" placeholder="Email" required>

@@ -1,3 +1,5 @@
+//Alternar pagina de login entre login e cadastro
+
 const buttons = document.querySelectorAll(".btn")
 const c_content = document.querySelector(".c-container__content")
 

@@ -6,6 +6,8 @@ const path = require("path")
 const routes = require("./routes")
 const mongoose = require("mongoose")
 const flash = require("connect-flash")
+const helmet = require("helmet")
+const csrf = require("csurf")
 
 //Mongodb
 mongoose.connect(
@@ -20,6 +22,7 @@ mongoose.connect(
 })
   .catch(err => console.log("Erro ao se conectar ao Mongodb"))
 
+// app.use(helmet())
 
 app.use(express.urlencoded({ extended: true }))
 
@@ -37,7 +40,13 @@ app.use(flash())
 
 //Global Middlewares
 const setLocalsVarMiddleware = require("./src/middlewares/setLocalsVarMiddleware")
+const { csrfErrorMiddleware } = require("./src/middlewares/csrfMiddleware")
+
+//Add security
+app.use(csrf())
+app.use(csrfErrorMiddleware)
 app.use(setLocalsVarMiddleware)
+
 
 //Routes
 app.use(routes)

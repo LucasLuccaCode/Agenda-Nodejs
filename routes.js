@@ -10,12 +10,13 @@ const contactsControllers = require("./src/controllers/contactsControllers")
 //Middlewares
 const checkLoggedMiddleware = require("./src/middlewares/checkLoggedMiddleware")
 const getContactsMiddleware = require("./src/middlewares/getContactsMiddleware")
+const { setCsrfTokenMiddleware } = require("./src/middlewares/csrfMiddleware")
 
 //Home routes
 router.get("/", getContactsMiddleware, homeControllers.index)
 
 //Login routes
-router.get("/login/index", loginControllers.index)
+router.get("/login/index", setCsrfTokenMiddleware, loginControllers.index)
 router.post("/login/register", loginControllers.register)
 router.post("/login/login", loginControllers.login)
 
@@ -25,9 +26,9 @@ router.get("/profile/user/:userID", checkLoggedMiddleware, getContactsMiddleware
 router.get("/profile/logout", profileControllers.logout)
 
 //Contacts routes
-router.get("/contacts/index", contactsControllers.index)
+router.get("/contacts/index", setCsrfTokenMiddleware, checkLoggedMiddleware, contactsControllers.index)
 router.post("/contacts/register", contactsControllers.register)
 router.post("/contacts/update", contactsControllers.update)
-router.get("/contacts/delete", contactsControllers.delete)
+router.get("/contacts/delete", checkLoggedMiddleware, contactsControllers.delete)
 
 module.exports = router
