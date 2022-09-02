@@ -1,4 +1,3 @@
-const ContactModel = require("../models/ContactModel")
 const Contact = require("../models/Contact")
 
 exports.index = async (req, res) => {
@@ -16,7 +15,7 @@ exports.index = async (req, res) => {
 }
 
 exports.register = async (req, res) => {
-  const contact = new Contact(req.body)
+  const contact = new Contact(req.body, req.session.user.username)
   await contact.register()
   if (contact.errors.length) {
     req.flash("error", contact.errors)
@@ -29,7 +28,7 @@ exports.register = async (req, res) => {
 
 exports.update = async (req, res) => {
   try {
-    const contact = new Contact(req.body)
+    const contact = new Contact(req.body, req.session.user.username)
     await contact.edit(req.query.id)
     if (contact.errors.length) {
       req.flash("error", contact.errors)

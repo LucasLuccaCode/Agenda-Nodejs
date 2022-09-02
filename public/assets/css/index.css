@@ -84,7 +84,7 @@ h1 {
   color: var(--secondary-color);
   background: var(--details-color);
   padding: .3rem .5rem;
-  border-radius: 50px;
+  border-radius: .2rem;
 }
 
 .c-container {

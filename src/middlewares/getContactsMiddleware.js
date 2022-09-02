@@ -1,8 +1,8 @@
-const ContactModel = require("../models/ContactModel")
+const Contact = require("../models/Contact")
 
 module.exports = async (req, res, next) => {
   try {
-    const contacts = await ContactModel.find()
+    const contacts = await Contact.getContacts(req.session.user.username)
     res.locals.contacts = contacts.length ? contacts : null
     next()
   } catch (err) {
